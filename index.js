@@ -9,7 +9,7 @@ app.use(express.json());
 
 app.get('/',async(req,res)=>{
     const tasks=await Tasks.find()
-    res.json(tasks);
+    res.status(200).json(tasks);
 })
 
 app.post("/",async(req,res)=>{
@@ -19,7 +19,7 @@ app.post("/",async(req,res)=>{
         title,date,isFinished
     });
     const newTask = await task.save();
-    res.json(newTask);
+    res.status(201).json(newTask);
 })
 
 app.put("/:id",async(req,res)=>{
